@@ -68,11 +68,10 @@ function CSVFormat(f, d) {
 	reader.addEventListener("load", function (e) {
 		let text = e.target.result;
 
-		data = text.split("\r\n"); // Divisione in righe
-		data.splice(0, 1); // Eliminazione prima riga
+		data = text.split("\r\n");
+		data.splice(0, 1);
 		data.splice(data.length - 1);
 
-		// Eliminazione colonne non necessarie, seconda riga
 		data[0] = data[0].split(",");
 		data[0].splice(7, 1);
 		data[0].splice(12, 1);
@@ -81,8 +80,6 @@ function CSVFormat(f, d) {
 		data[0].splice(3, 1);
 		data[0].splice(0, 2);
 
-		// Eliminazione colonne non necessarie, totale
-		// Colonne da tenere: 2,4,5,14
 		for (let i = 1; i < data.length; i++) {
 			data[i] = data[i].split(",");
 			data[i].splice(15);
@@ -92,10 +89,8 @@ function CSVFormat(f, d) {
 
 			let date = data[i][0];
 			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2) + " " + date.substring(11));
-			console.log(i);
 		}
 
-		// Ordinamento per data
 		data.sort(function (a, b) {
 			if (typeof a[0] == "string") return -1;
 			if (typeof b[0] == "string") return 1;
