@@ -105,6 +105,18 @@ function CSVFormat(f, d) {
 			}
 		}
 
-		console.table(data);
+		data.forEach((e, i) => {
+			data[i] = e.join();
+		});
+
+		data = data.join("\n");
+
+		let file = new File([new Blob([data], { type: 'text/plain' })], "LibreViewFormatted.csv", { type: "text/plain" });
+		let link = document.createElement("a");
+		link.download = file.name;
+		link.href = URL.createObjectURL(file);
+		link.click();
+
+		console.log(file);
 	});
 }
