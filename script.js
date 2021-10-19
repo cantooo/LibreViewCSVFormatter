@@ -98,6 +98,13 @@ function CSVFormat(f, d) {
 			return 1;
 		});
 
-		console.log(data);
+		for (let i = 1; i < data.length; i++) {
+			if (data[i][0].getTime() <= d.getTime()) {
+				data.splice(i, 1);
+				i--;
+			}
+		}
+
+		console.table(data);
 	});
 }
