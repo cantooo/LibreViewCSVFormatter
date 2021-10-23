@@ -51,7 +51,7 @@ function controllaInput() {
 		time = inputTime.value;
 	}
 
-	if (corretto) CSVFormat(file, new Date(date + " " + time));
+	if (corretto) CSVFormat(file, new Date(date + "T" + time));
 }
 
 /**
@@ -100,7 +100,7 @@ function CSVFormat(f, d) {
 
 			// Formattazione della data in oggetto Date
 			let date = data[i][0];
-			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2) + " " + date.substring(11));
+			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2) + "T" + date.substring(11));
 		}
 
 		// Ordinamento per data e ora, intestazione come prima riga
