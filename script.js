@@ -73,6 +73,8 @@ function CSVFormat(f, d) {
 	reader.readAsText(f);
 	reader.addEventListener("load", function (e) {
 		let text = e.target.result;
+		text = text.replaceAll(",0\"", "");
+		text = text.replaceAll("\"", "");
 
 		// Divisione in righe
 		button.innerText = "Divisione in righe";
@@ -90,7 +92,9 @@ function CSVFormat(f, d) {
 		// Eliminazione colonne non necessarie nella prima riga
 		button.innerText = "Eliminazione colonne non necessarie nella prima riga";
 		data[0].splice(17);
-		data[0].splice(6, 10);
+		data[0].splice(15, 1);
+		data[0].splice(9, 5);
+		data[0].splice(6, 2);
 		data[0].splice(3, 1);
 		data[0].splice(0, 2);
 
@@ -102,13 +106,19 @@ function CSVFormat(f, d) {
 
 			// Eliminazione colonne non necessarie
 			data[i].splice(15);
-			data[i].splice(6, 8);
+			data[i].splice(13, 1);
+			data[i].splice(8, 4);
+			data[i].splice(6, 1);
 			data[i].splice(3, 1);
 			data[i].splice(0, 2);
 
 			// Formattazione della data in oggetto Date
 			let date = data[i][0];
 			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2) + "T" + date.substring(11));
+
+			// Formattazione delle unità di insulina in numero
+			if (data[i][3] != "") data[i][3] = parseInt(data[i][3]);
+			if (data[i][4] != "") data[i][4] = parseInt(data[i][4]);
 		}
 
 		// Ordinamento per data e ora, intestazione come prima riga
