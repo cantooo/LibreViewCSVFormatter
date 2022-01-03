@@ -89,10 +89,8 @@ function CSVFormat(f, d) {
 
 		// Eliminazione colonne non necessarie nella prima riga
 		button.innerText = "Eliminazione colonne non necessarie nella prima riga";
-		data[0].splice(7, 1);
-		data[0].splice(12, 1);
-		data[0].splice(15);
-		data[0].splice(6, 8);
+		data[0].splice(17);
+		data[0].splice(6, 10);
 		data[0].splice(3, 1);
 		data[0].splice(0, 2);
 
