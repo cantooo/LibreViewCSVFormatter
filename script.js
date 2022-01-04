@@ -145,8 +145,8 @@ function CSVFormat(f, d) {
 		data.forEach((e, i) => {
 			if (i == 0) return;
 			e[0] = "".concat(e[0].getDate(), "/", e[0].getMonth() + 1, "/",
-				e[0].getFullYear(), " ", e[0].getHours(), ":",
-				e[0].getMinutes());
+				e[0].getFullYear(), " ", (e[0].getHours() < 9) ? "0" + e[0].getHours() : e[0].getHours()
+				, ":", (e[0].getMinutes() < 9) ? "0" + e[0].getMinutes() : e[0].getMinutes());
 		});
 
 		// Unione delle colonne
