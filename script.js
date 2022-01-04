@@ -114,7 +114,8 @@ function CSVFormat(f, d) {
 
 			// Formattazione della data in oggetto Date
 			let date = data[i][0];
-			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2) + "T" + date.substring(11));
+			data[i][0] = new Date(date.substring(6, 10) + "-" + date.substring(3, 5) + "-" +
+				date.substring(0, 2) + "T" + date.substring(11));
 
 			// Formattazione delle unità di insulina in numero
 			if (data[i][3] != "") data[i][3] = parseInt(data[i][3]);
@@ -161,7 +162,8 @@ function CSVFormat(f, d) {
 
 		// Creazione file e download
 		button.innerText = "Creazione del file";
-		let file = new File([new Blob([data], { type: 'text/plain' })], "LibreViewFormatted.csv", { type: "text/plain" });
+		let file = new File([new Blob([data], { type: 'text/plain' })], "LibreViewFormatted.csv",
+			{ type: "text/plain" });
 		let link = document.createElement("a");
 		link.download = file.name;
 		link.href = URL.createObjectURL(file);
